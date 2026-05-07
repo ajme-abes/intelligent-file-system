@@ -1,0 +1,28 @@
+import os
+class DataFile:
+    
+    supported_types = {
+        ".csv": "csv",
+        ".txt": "txt"
+    }
+
+    def __init__(self, path: str):
+        self.path = path
+        self.name = os.path.basename(path)
+        self.extension = self._get_extension()
+        self.file_type = self._detect_type()
+    
+    def _get_extension(self):
+        return os.path.splitext(self.path)[1].lower()
+    
+    def _detect_type(self):
+        if self.extension in self.supported_types:
+            return self.supported_types[self.extension]
+        raise ValueError(f"Unsuported File type:{self.extension}")
+
+    def get_metadata(self):
+        return {
+            "name": self.name,
+            "path": self.path,
+            "type": self.file_type  
+        }
