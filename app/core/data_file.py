@@ -3,7 +3,8 @@ class DataFile:
     
     supported_types = {
         ".csv": "csv",
-        ".txt": "txt"
+        ".txt": "txt",
+        ".json": "json"
     }
 
     def __init__(self, path: str):

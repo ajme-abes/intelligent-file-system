@@ -1,6 +1,8 @@
 from app.core.data_file import DataFile
 from app.processors.csv_processor import CSVProcessor
 from app.processors.txt_processor import TXTProcessor
+from app.processors.json_processor import JsonProcessor
+from app.monitoring.monitor import FileMonitor
 
 
 def get_processor(file_type: str):
@@ -8,6 +10,8 @@ def get_processor(file_type: str):
         return CSVProcessor()
     elif file_type == "txt":
         return TXTProcessor()
+    elif file_type == "json":
+        return JsonProcessor()
     else:
         raise ValueError('Unsupported file')
 def run(file_path: str):
@@ -26,7 +30,11 @@ def run(file_path: str):
     print(f"[SUCCESS] Saved to {output_path}")
 
 if __name__ == "__main__":
-    run("data/input/sample.csv")
+    # run("data/input/sample.txt")
+    monitor = FileMonitor("data/input")
+    print("[INFO] Starting file monitor...")
+    monitor.start()
+
 
 
 
