@@ -78,10 +78,68 @@
 # library.add_books(Book("think and grow rich", "robert Green"))
 # library.display_book()
 
-class Electronics:
-    def __init__(self, name, modelz, year):
-        self.name = name
-        self.model = model
-        self.year = year
+# class Electronics:
+#     def __init__(self, name, model, year):
+#         self.name = name
+#         self.model = model
+#         self.year = year
+
+
+# def lis(nums : list):
+#     print(nums)
+
+# nu = [1,2,3,4,3]
+# lis(nu)
+
+# class Employee:
+#     def __init__(self, first, last):
+#         self.first = first
+#         self.last = last
+        
+#     @property
+#     def email(self):
+#         return '{}.{}@comp.com'.format(self.first ,self.last)
+
+#     @property
+#     def fullname(self):
+#         return "{} {}".format(self.first, self.last)
+
+#     @fullname.setter
+#     def fullname(self, name):
+#         first , last = name.split(" ")
+#         self.first = first
+#         self.last = last
+
+#     @fullname.deleter
+#     def fullname(self):
+#         print("Full name Deleted!")
+#         self.first = None
+#         self.last = None
+    
+
+# emp = Employee("john", "jujusu")
+# emp.first = 'Sedo'
+# emp.fullname = "samme martial"
+# print(emp.first)
+# print(emp.email)
+# print(emp.fullname)
+# del emp.fullname
+# def solution(s):
+#     if len(s) % 2 != 0:
+#         s += "_"
+#     result = []
+#     for i in range(0, len(s), 2):
+#         result.append(s[i:i+2])
+    
+#     return result
+        
+# s = "abcdefg"
+# print(solution(s))
+# import re
+# def sol(s):
+#     return re.findall(".{2}", s + '_')
+# s = "abcdefg"
+# print(sol(s))
+
 
 

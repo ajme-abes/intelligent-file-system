@@ -11,3 +11,148 @@
 2026-05-08 22:30:04,305 - INFO - [INFO] Detected new file: {'name': 'jo.json', 'path': 'data/input\\jo.json', 'type': 'json'}
 2026-05-08 22:30:15,430 - INFO - [INFO] Detected new file: {'name': 'jim.csv', 'path': 'data/input\\jim.csv', 'type': 'csv'}
 2026-05-08 22:30:21,969 - INFO - [INFO] File monitor stopped.
+2026-05-10 18:11:03,543 - INFO - [INFO] File monitor started for directory: data/input
+2026-05-10 18:17:14,401 - WARNING - [WARNING] Unsupported file skipped: data/input\ml.pdf
+2026-05-10 18:17:59,106 - INFO - [INFO] File monitor stopped.
+2026-05-10 18:25:47,684 - INFO - [INFO] File monitor started for directory: data/input
+2026-05-10 18:25:55,447 - INFO - [INFO] File Modified data/input\sample.txt - re-scaninig
+2026-05-10 18:25:56,448 - INFO - [INFO] Detected new file: {'name': 'sample.txt', 'path': 'data/input\\sample.txt', 'type': 'txt'}
+2026-05-10 18:26:01,693 - INFO - [INFO] File Modified data/input\sample.txt - re-scaninig
+2026-05-10 18:26:02,694 - INFO - [INFO] Detected new file: {'name': 'sample.txt', 'path': 'data/input\\sample.txt', 'type': 'txt'}
+2026-05-10 18:26:02,694 - INFO - [INFO] File Modified data/input\sample.txt - re-scaninig
+2026-05-10 18:26:03,695 - INFO - [INFO] Detected new file: {'name': 'sample.txt', 'path': 'data/input\\sample.txt', 'type': 'txt'}
+2026-05-10 18:26:17,522 - INFO - [INFO] File Modified data/input\sample.txt - re-scaninig
+2026-05-10 18:26:18,523 - INFO - [INFO] Detected new file: {'name': 'sample.txt', 'path': 'data/input\\sample.txt', 'type': 'txt'}
+2026-05-10 18:26:18,523 - INFO - [INFO] File Modified data/input\sample.txt - re-scaninig
+2026-05-10 18:26:19,524 - INFO - [INFO] Detected new file: {'name': 'sample.txt', 'path': 'data/input\\sample.txt', 'type': 'txt'}
+2026-05-10 18:26:25,253 - INFO - [INFO] File monitor stopped.
+2026-05-10 18:33:46,120 - INFO - [INFO] File monitor started for directory: data/input
+2026-05-10 18:33:57,512 - INFO - [INFO] File Modified data/input\sample.txt - re-scaninig
+2026-05-10 18:33:58,512 - INFO - [INFO] Detected new file: {'name': 'sample.txt', 'path': 'data/input\\sample.txt', 'type': 'txt'}
+2026-05-10 18:33:58,512 - INFO - [INFO] File Modified data/input\sample.txt - re-scaninig
+2026-05-10 18:33:59,513 - INFO - [INFO] Detected new file: {'name': 'sample.txt', 'path': 'data/input\\sample.txt', 'type': 'txt'}
+2026-05-10 18:34:10,588 - INFO - [INFO] File Modified data/input\sample.txt - re-scaninig
+2026-05-10 18:34:11,589 - INFO - [INFO] Detected new file: {'name': 'sample.txt', 'path': 'data/input\\sample.txt', 'type': 'txt'}
+2026-05-10 18:34:11,589 - INFO - [INFO] File Modified data/input\sample.txt - re-scaninig
+2026-05-10 18:34:12,590 - INFO - [INFO] Detected new file: {'name': 'sample.txt', 'path': 'data/input\\sample.txt', 'type': 'txt'}
+2026-05-10 18:34:21,633 - INFO - [INFO] File Modified data/input\sample.txt - re-scaninig
+2026-05-10 18:34:22,637 - INFO - [INFO] Detected new file: {'name': 'sample.txt', 'path': 'data/input\\sample.txt', 'type': 'txt'}
+2026-05-10 18:34:22,637 - INFO - [INFO] File Modified data/input\sample.txt - re-scaninig
+2026-05-10 18:34:23,637 - INFO - [INFO] Detected new file: {'name': 'sample.txt', 'path': 'data/input\\sample.txt', 'type': 'txt'}
+2026-05-10 18:34:34,270 - INFO - [INFO] File monitor stopped.
+2026-05-10 18:36:34,184 - INFO - [INFO] File monitor started for directory: data/input
+2026-05-10 18:36:50,679 - INFO - [INFO] File Modified data/input\sample.csv - re-scaninig
+2026-05-10 18:36:51,679 - INFO - [INFO] Detected new file: {'name': 'sample.csv', 'path': 'data/input\\sample.csv', 'type': 'csv'}
+2026-05-10 18:37:12,620 - INFO - [INFO] File Modified data/input\sample.csv - re-scaninig
+2026-05-10 18:37:13,621 - INFO - [INFO] Detected new file: {'name': 'sample.csv', 'path': 'data/input\\sample.csv', 'type': 'csv'}
+2026-05-10 18:37:13,621 - INFO - [INFO] File Modified data/input\sample.csv - re-scaninig
+2026-05-10 18:37:14,633 - INFO - [INFO] Detected new file: {'name': 'sample.csv', 'path': 'data/input\\sample.csv', 'type': 'csv'}
+2026-05-10 19:09:09,175 - INFO - [INFO] File monitor stopped.
+2026-05-10 19:09:16,538 - INFO - [INFO] File monitor started for directory: data/input
+2026-05-10 19:09:34,097 - INFO - [INFO] File Modified data/input\sample.txt - re-scaninig
+2026-05-10 19:09:38,412 - INFO - [INFO] File Modified data/input\sample.txt - re-scaninig
+2026-05-10 19:09:49,532 - INFO - [INFO] File Modified data/input\sample.txt - re-scaninig
+2026-05-10 19:09:52,585 - INFO - [INFO] File Modified data/input\sample.txt - re-scaninig
+2026-05-10 19:10:21,330 - INFO - [INFO] File monitor stopped.
+2026-05-10 19:10:42,275 - INFO - [INFO] File monitor started for directory: data/input
+2026-05-10 19:11:20,985 - INFO - [INFO] File Modified data/input\sample.txt - re-scaninig
+2026-05-10 19:12:43,971 - INFO - [INFO] File monitor stopped.
+2026-05-10 19:13:25,864 - INFO - [INFO] File monitor started for directory: data/input
+2026-05-10 19:13:35,047 - INFO - [INFO] File Deleted data/input\ml.pdf - removed from processed list
+2026-05-10 19:13:59,506 - INFO - [INFO] File Modified data/input\sample.csv - re-scaninig
+2026-05-10 19:14:16,687 - INFO - [INFO] File Modified data/input\sample.csv - re-scaninig
+2026-05-10 19:14:53,620 - INFO - [INFO] File monitor stopped.
+2026-05-10 21:11:08,892 - INFO - [INFO] File monitor started for directory: data/input
+2026-05-10 21:13:09,010 - INFO - [INFO] File Modified data/input\sample.txt - re-scaninig
+2026-05-10 21:13:11,558 - INFO - [INFO] File Modified data/input\sample.txt - re-scaninig
+2026-05-10 21:26:49,687 - INFO - [INFO] File monitor stopped.
+2026-05-10 21:32:53,958 - INFO - [INFO] File monitor started for directory: data/input
+2026-05-10 21:33:17,472 - INFO - [INFO] Detected new file: {'name': 'inpu.json', 'path': 'data/input\\inpu.json', 'type': 'json'}
+2026-05-10 21:33:17,472 - ERROR - [ERROR] Error processing file data/input\inpu.json: 'dict' object has no attribute 'add'
+2026-05-10 21:33:30,478 - INFO - [INFO] File Modified data/input\inpu.json - re-scaninig
+2026-05-10 21:33:37,155 - INFO - [INFO] File Modified data/input\sample.json - re-scaninig
+2026-05-10 21:33:44,619 - INFO - [INFO] File Modified data/input\jo.json - re-scaninig
+2026-05-10 21:33:48,598 - INFO - [INFO] File Modified data/input\jo.json - re-scaninig
+2026-05-10 21:33:50,892 - INFO - [INFO] File Modified data/input\jo.json - re-scaninig
+2026-05-10 21:33:55,059 - INFO - [INFO] File Modified data/input\jo.json - re-scaninig
+2026-05-10 21:33:57,559 - INFO - [INFO] File Modified data/input\jo.json - re-scaninig
+2026-05-10 21:33:59,996 - INFO - [INFO] File Modified data/input\jo.json - re-scaninig
+2026-05-10 21:34:03,186 - INFO - [INFO] File Modified data/input\jo.json - re-scaninig
+2026-05-10 21:36:05,820 - INFO - [INFO] File monitor stopped.
+2026-05-10 21:36:46,903 - INFO - [INFO] File monitor started for directory: data/input
+2026-05-10 21:36:49,134 - INFO - [INFO] File monitor stopped.
+2026-05-13 13:50:25,483 - ERROR - [Error] Failed to process file: data/input/test_users.csv
+2026-05-13 13:50:25,483 - ERROR - [Error] Failed to process file: data/input/test_config.json
+2026-05-13 13:50:25,483 - ERROR - Unsupported file type: data/input/test_image.png
+2026-05-13 13:51:51,295 - ERROR - [Error] Failed to process file: ../dockerdata/input/test_users.csv
+2026-05-13 13:51:51,297 - ERROR - [Error] Failed to process file: data/input/test_config.json
+2026-05-13 13:51:51,300 - ERROR - Unsupported file type: data/input/test_image.png
+2026-05-13 13:53:32,551 - ERROR - [Error] Failed to process file: ../data/input/test_users.csv
+2026-05-13 13:53:32,551 - ERROR - [Error] Failed to process file: data/input/test_config.json
+2026-05-13 13:53:32,551 - ERROR - Unsupported file type: data/input/test_image.png
+2026-05-13 14:02:07,546 - ERROR - [Error] Failed to process file: ../data/input/test_users.csv
+2026-05-13 14:02:07,549 - ERROR - [Error] Failed to process file: ../data/input/test_config.json
+2026-05-13 14:02:07,553 - ERROR - Unsupported file type: data/input/test_image.png
+2026-05-13 14:03:19,811 - ERROR - [Error] Failed to process file: ../data/input/test_users.csv
+2026-05-13 14:03:19,813 - ERROR - [Error] Failed to process file: ../data/input/test_config.json
+2026-05-13 14:03:19,815 - ERROR - Unsupported file type: data/input/test_image.png
+2026-05-13 14:13:45,452 - ERROR - [Error] Failed to process file: ../data/input/test_users.csv
+2026-05-13 14:13:45,454 - ERROR - [Error] Failed to process file: ../data/input/test_config.json
+2026-05-13 14:13:45,454 - ERROR - Unsupported file type: data/input/test_image.png
+2026-05-13 14:16:10,153 - ERROR - [Error] Failed to process file: ../data/input/test_users.csv
+2026-05-13 14:16:10,153 - ERROR - [Error] Failed to process file: ../data/input/test_config.json
+2026-05-13 14:16:10,153 - ERROR - Unsupported file type: data/input/test_image.png
+2026-05-13 14:18:57,842 - ERROR - [Error] Failed to process file: ../data/input/test_users.csv
+2026-05-13 14:18:57,847 - ERROR - [Error] Failed to process file: ../data/input/test_config.json
+2026-05-13 14:18:57,853 - ERROR - Unsupported file type: data/input/test_image.png
+2026-05-13 15:05:35,128 - ERROR - [Error] Failed to process file: ../data/input/test_users.csv
+2026-05-13 15:05:35,128 - ERROR - [Error] Failed to process file: ../data/input/test_config.json
+2026-05-13 15:05:35,132 - ERROR - Unsupported file type: data/input/test_image.png
+2026-05-13 15:09:09,079 - ERROR - [Error] Failed to process file: ../data/input/test_users.csv
+2026-05-13 15:09:09,079 - ERROR - [Error] Failed to process file: ../data/input/test_config.json
+2026-05-13 15:09:09,082 - ERROR - Unsupported file type: data/input/test_image.png
+2026-05-13 15:14:20,128 - ERROR - [Error] Failed to process file: ../data/input/test_users.csv
+2026-05-13 15:14:20,128 - ERROR - [Error] Failed to process file: ../data/input/test_config.json
+2026-05-13 15:14:20,128 - ERROR - Unsupported file type: data/input/test_image.png
+2026-05-13 15:19:40,529 - ERROR - [Error] Failed to process file: ../data/input/test_users.csv
+2026-05-13 15:19:40,533 - ERROR - [Error] Failed to process file: ../data/input/test_config.json
+2026-05-13 15:19:40,539 - ERROR - Unsupported file type: data/input/test_image.png
+2026-05-13 15:23:32,446 - ERROR - [Error] Failed to process file: ../data/input/test_users.csv
+2026-05-13 15:23:32,447 - ERROR - [Error] Failed to process file: ../data/input/test_config.json
+2026-05-13 15:23:32,456 - ERROR - Unsupported file type: data/input/test_image.png
+2026-05-13 15:27:18,803 - ERROR - [Error] Failed to process file: ../data/input/test_users.csv
+2026-05-13 15:27:18,803 - ERROR - [Error] Failed to process file: ../data/input/test_config.json
+2026-05-13 15:27:18,803 - ERROR - Unsupported file type: data/input/test_image.png
+2026-05-13 15:34:00,334 - ERROR - [Error] no processor found for file type : csv
+2026-05-13 15:34:00,334 - ERROR - [Error] Failed to process file: ../data/input/test_config.json
+2026-05-13 15:34:00,334 - ERROR - Unsupported file type: data/input/test_image.png
+2026-05-13 15:34:28,703 - ERROR - [Error] Failed to process file: ../data/input/test_users.csv
+2026-05-13 15:34:28,708 - ERROR - [Error] Failed to process file: ../data/input/test_config.json
+2026-05-13 15:34:28,710 - ERROR - Unsupported file type: data/input/test_image.png
+2026-05-13 15:39:17,078 - ERROR - [Error] Failed to process file: ../data/input/test_users.csv
+2026-05-13 15:39:17,080 - ERROR - [Error] Failed to process file: ../data/input/test_config.json
+2026-05-13 15:39:17,081 - ERROR - Unsupported file type: data/input/test_image.png
+2026-05-13 15:43:56,079 - ERROR - [Error] Failed to process file: C:\Users\ajmel\Desktop\the Intelliginet file system\test\../data/input/test_users.csv
+2026-05-13 15:43:56,079 - ERROR - [Error] Failed to process file: ../data/input/test_config.json
+2026-05-13 15:43:56,087 - ERROR - Unsupported file type: data/input/test_image.png
+2026-05-13 15:46:43,958 - ERROR - [Error] Failed to process file: ../data/input/sample.csv
+2026-05-13 15:46:43,974 - ERROR - [Error] Failed to process file: ../data/input/test_config.json
+2026-05-13 15:46:43,974 - ERROR - Unsupported file type: data/input/test_image.png
+2026-05-13 15:53:38,001 - ERROR - [Error] Failed to process file: ../data/input/test_users.csv
+2026-05-13 15:53:38,017 - ERROR - Unsupported file type: data/input/test_image.png
+2026-05-13 15:54:46,246 - ERROR - [Error] Failed to process file: ../data/input/sample.csv
+2026-05-13 15:54:46,246 - ERROR - Unsupported file type: data/input/test_image.png
+2026-05-13 15:56:27,346 - ERROR - Unsupported file type: data/input/test_image.png
+2026-05-13 16:54:48,618 - INFO - [INFO] File monitor started for directory: data/input
+2026-05-13 16:56:07,581 - ERROR - [ERROR] Error processing file data/input\sample1 (1).json: 'TaskDispatcher' object has no attribute 'submit_task'
+2026-05-13 16:56:07,583 - INFO - [INFO] File Modified data/input\sample1 (1).json - re-scaninig
+2026-05-13 16:56:08,585 - ERROR - [ERROR] Error processing file data/input\chun.txt: 'TaskDispatcher' object has no attribute 'submit_task'
+2026-05-13 16:56:08,585 - INFO - [INFO] File Modified data/input\chun.txt - re-scaninig
+2026-05-13 17:05:35,386 - INFO - [INFO] File monitor stopped.
+2026-05-13 17:05:42,277 - INFO - [INFO] File monitor started for directory: data/input
+2026-05-13 17:06:37,955 - INFO - [INFO] Detected new file: {'name': 'nd.txt', 'path': 'data/input\\nd.txt', 'type': 'txt'}
+2026-05-13 17:06:38,960 - INFO - [INFO] Detected new file: {'name': 'maybe.txt', 'path': 'data/input\\maybe.txt', 'type': 'txt'}
+2026-05-13 17:11:32,640 - INFO - [INFO] File Modified data/input\sample.txt - re-scaninig
+2026-05-13 17:11:32,672 - INFO - [INFO] File Modified data/input\test_config.json - re-scaninig
+2026-05-13 17:11:32,675 - INFO - [INFO] File Modified data/input\test_image.png - re-scaninig
+2026-05-13 17:11:32,678 - INFO - [INFO] File Modified data/input\test_users.csv - re-scaninig
