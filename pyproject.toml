@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "intelligent-file-system"
+version = "0.1.0"
+description = "An AI-powered intelligent file monitoring and processing system"
+authors = [
+    {name = "Ajmel Abes"}
+]
+readme = "README.md"
+requires-python = ">=3.10"
+
+dependencies = [
+    "watchdog",
+    "pandas",
+    "scikit-learn",
+    "joblib",
+    "pandas",
+    "numpy"
+]
+
+[tool.setuptools.packages.find]
+where = ["."]

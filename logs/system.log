@@ -156,3 +156,5 @@
 2026-05-13 17:11:32,672 - INFO - [INFO] File Modified data/input\test_config.json - re-scaninig
 2026-05-13 17:11:32,675 - INFO - [INFO] File Modified data/input\test_image.png - re-scaninig
 2026-05-13 17:11:32,678 - INFO - [INFO] File Modified data/input\test_users.csv - re-scaninig
+2026-05-14 16:00:33,503 - INFO - [INFO] File monitor started for directory: data/input
+2026-05-14 16:00:39,132 - INFO - [INFO] File monitor stopped.
