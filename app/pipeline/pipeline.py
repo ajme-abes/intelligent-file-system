@@ -1,5 +1,6 @@
-import os
 import threading
+
+from app.config.settings import settings
 from app.core.data_file import DataFile
 from app.utils.validator import is_supported_file
 from app.processors.csv_processor import CSVProcessor
@@ -40,15 +41,12 @@ class ProcessingPipeline:
             data = processor.load(data_file.path)
             processed_data = processor.process(data)
 
-            # Build absolute output path from the project root (two levels up from app/pipeline/)
-            project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-            output_dir = os.path.join(project_root, "data", "output")
-            os.makedirs(output_dir, exist_ok=True)
+            # Output path comes from config — never hardcoded
+            settings.OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+            output_path = settings.OUTPUT_DIR / f"processed_{data_file.name}"
+            processor.save(processed_data, str(output_path))
 
-            output_path = os.path.join(output_dir, f"processed_{data_file.name}")
-            processor.save(processed_data, output_path)
-
-            logger.info(f"[INFO] Processed file saved: {output_path}")
+            logger.info(f"Processed file saved: {output_path}")
             print(f"[Pipeline Success] Saved to: {output_path}")
 
         except Exception as e:
@@ -57,4 +55,3 @@ class ProcessingPipeline:
             return False
 
         return True
-

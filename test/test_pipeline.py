@@ -1,53 +1,82 @@
-import os
+"""Integration tests for ProcessingPipeline.run()"""
+
 import json
+import os
+
+import pytest
+
 from app.pipeline.pipeline import ProcessingPipeline
-from app.core.data_file import DataFile
 
-def setup_test_environment():
-    os.makedirs("../data/input", exist_ok=True)
-    os.makedirs("../data/output", exist_ok=True)
 
-def create_mock_files():
-    """Generate dummy data files for testing."""
-    # 1. Create a valid CSV file
-    with open("../data/input/test_users.csv", "w", encoding="utf-8") as f:
-        f.write("id,name,role\n1,Alice,Admin\n2,Bob,User")
-        
-    # 2. Create a valid JSON file
-    with open("../data/input/test_config.json", "w", encoding="utf-8") as f:
-        json.dump({"status": "active", "version": 1.0}, f)
+@pytest.fixture()
+def pipeline():
+    return ProcessingPipeline()
 
-    # 3. Create an unsupported file type
-    with open("../data/input/test_image.png", "w", encoding="utf-8") as f:
-        f.write("fake_image_data")
 
-def run_tests():
-    setup_test_environment()
-    create_mock_files()
-    # Initialize the pipeline
-    pipeline = ProcessingPipeline()
-    print("=== STARTING PIPELINE TESTS ===")
-    
-    # Test Case 1: Valid CSV file processing
-    print("\n--- Test Case 1: Valid CSV ---")
-    #data_file = DataFile("../data/input/test_users.csv")
-    csv_success = pipeline.run("../data/input/test_users.csv")
-    print(f"Result Status: {csv_success}")
-    
-    # Test Case 2: Valid JSON file processing
-    print("\n--- Test Case 2: Valid JSON ---")
-    json_success = pipeline.run("../data/input/test_config.json")
-    print(f"Result Status: {json_success}")
-    
-    # Test Case 3: Unsupported File Extension (Should fail gracefully)
-    print("\n--- Test Case 3: Unsupported Extension (.png) ---")
-    png_success = pipeline.run("data/input/test_image.png")
-    print(f"Result Status: {png_success} (Expected: False)")
+# ── Happy paths ───────────────────────────────────────────────────────────────
 
-    # 4. Verify Output Files Exist
-    print("\n=== VERIFYING OUTPUT DIRECTORY ===")
-    output_files = os.listdir("../data/output")
-    print(f"Files found in data/output: {output_files}")
+def test_pipeline_processes_csv(pipeline, csv_file, tmp_output, monkeypatch):
+    # Point the pipeline output to our isolated tmp_output
+    from app.config import settings
+    monkeypatch.setattr(settings, "OUTPUT_DIR", tmp_output)
 
-if __name__ == "__main__":
-    run_tests()
+    result = pipeline.run(csv_file)
+    assert result is True
+    assert (tmp_output / "processed_users.csv").exists()
+
+
+def test_pipeline_processes_json_array(pipeline, json_array_file, tmp_output, monkeypatch):
+    from app.config import settings
+    monkeypatch.setattr(settings, "OUTPUT_DIR", tmp_output)
+
+    result = pipeline.run(json_array_file)
+    assert result is True
+    out = tmp_output / "processed_records.json"
+    assert out.exists()
+    with open(out, encoding="utf-8") as f:
+        data = json.load(f)
+    assert isinstance(data, list)
+
+
+def test_pipeline_processes_txt(pipeline, txt_file, tmp_output, monkeypatch):
+    from app.config import settings
+    monkeypatch.setattr(settings, "OUTPUT_DIR", tmp_output)
+
+    result = pipeline.run(txt_file)
+    assert result is True
+    assert (tmp_output / "processed_notes.txt").exists()
+
+
+# ── Failure paths ─────────────────────────────────────────────────────────────
+
+def test_pipeline_rejects_unsupported_type(pipeline, png_file):
+    result = pipeline.run(png_file)
+    assert result is False
+
+
+def test_pipeline_handles_nonexistent_file(pipeline, tmp_output, monkeypatch):
+    from app.config import settings
+    monkeypatch.setattr(settings, "OUTPUT_DIR", tmp_output)
+
+    result = pipeline.run("/nonexistent/path/file.csv")
+    assert result is False
+
+
+def test_pipeline_handles_empty_csv(pipeline, tmp_input, tmp_output, monkeypatch):
+    from app.config import settings
+    monkeypatch.setattr(settings, "OUTPUT_DIR", tmp_output)
+
+    empty = tmp_input / "empty.csv"
+    empty.write_text("id,name\n", encoding="utf-8")  # header only, no data rows
+    result = pipeline.run(str(empty))
+    assert result is True   # empty file is valid — outputs empty CSV
+
+
+def test_pipeline_handles_malformed_json(pipeline, tmp_input, tmp_output, monkeypatch):
+    from app.config import settings
+    monkeypatch.setattr(settings, "OUTPUT_DIR", tmp_output)
+
+    bad = tmp_input / "bad.json"
+    bad.write_text("{not valid json", encoding="utf-8")
+    result = pipeline.run(str(bad))
+    assert result is False
