@@ -8,62 +8,73 @@ from app.pipeline.dispatcher import TaskDispatcher
 
 
 class FileHandler(FileSystemEventHandler):
-    
-    processed_data = {}
-    dispatcher = TaskDispatcher()
+    """
+    Handles filesystem events for the monitored input directory.
+    Submits new/modified files to the processing pipeline via TaskDispatcher.
+    """
 
-    def on_created(self, event):
-        if event.is_directory:
-            return 
-        file_path = event.src_path
-        
-        # Safe dictionary key check
-        if file_path in self.processed_data:
-            return
-            
+    def __init__(self):
+        super().__init__()
+        # Instance-level state — safe if multiple monitors are ever created
+        self._processed_data: dict[str, float] = {}
+        self._dispatcher = TaskDispatcher()
+
+    def _submit(self, file_path: str) -> None:
+        """Common logic for submitting a file to the pipeline."""
         if not is_supported_file(file_path):
             logger.warning(f"[WARNING] Unsupported file skipped: {file_path}")
             return
-            
+
         try:
-            time.sleep(1)
-            
-            # 1. FIX: Added parenthesis and passed the file_path argument
-            self.dispatcher.submit_task(file_path)
-            
             data_file = DataFile(file_path)
             metadata = data_file.get_metadata()
-            logger.info(f"[INFO] Detected new file: {metadata}")
+            logger.info(f"[INFO] Detected file: {metadata}")
+            print(f"\n[New File] {metadata}")
 
-            print("\n [New File]")
-            print(metadata)
+            self._dispatcher.submit_task(file_path)
+            self._processed_data[file_path] = time.time()
 
-            # 2. FIX: Dictionary tracking assignment instead of .add()
-            self.processed_data[file_path] = time.time()
-            
         except Exception as e:
-            logger.error(f"[ERROR] Error processing file {file_path}: {e}")
-    
+            logger.error(f"[ERROR] Error submitting file {file_path}: {e}", exc_info=True)
+
+    def on_created(self, event):
+        if event.is_directory:
+            return
+
+        file_path = event.src_path
+
+        if file_path in self._processed_data:
+            return
+
+        # Brief delay to ensure the file is fully written before processing
+        time.sleep(0.5)
+        self._submit(file_path)
+
     def on_modified(self, event):
         if event.is_directory:
             return
-        current_time = time.time()
-        last_modified_time = self.processed_data.get(event.src_path, 0)
 
-        if current_time - last_modified_time < 2:
+        file_path = event.src_path
+        current_time = time.time()
+        last_time = self._processed_data.get(file_path, 0)
+
+        # Debounce: ignore rapid successive modify events (< 2s apart)
+        if current_time - last_time < 2:
             return
-        
-        logger.info(f"[INFO] File Modified {event.src_path} - re-scaninig")
-        # Update timestamp before passing
-        self.processed_data[event.src_path] = current_time
-        self.on_created(event)
+
+        logger.info(f"[INFO] File modified: {file_path} — re-queuing for processing")
+        print(f"\n[Modified] {os.path.basename(file_path)} — re-queuing")
+
+        # Remove from tracking so _submit doesn't skip it, then re-submit
+        self._processed_data.pop(file_path, None)
+        self._submit(file_path)
 
     def on_deleted(self, event):
         if event.is_directory:
             return
-        
-        if event.src_path in self.processed_data:
-            del self.processed_data[event.src_path]
 
-        logger.info(f"[INFO] File Deleted {event.src_path} - removed from processed list")
-        print(f"\n [Deleted] {os.path.basename(event.src_path)} removed from processed list")
+        file_path = event.src_path
+        self._processed_data.pop(file_path, None)
+
+        logger.info(f"[INFO] File deleted: {file_path} — removed from tracking")
+        print(f"\n[Deleted] {os.path.basename(file_path)} removed from tracking")
