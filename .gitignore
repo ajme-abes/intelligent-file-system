@@ -20,3 +20,4 @@ data/input/*
 dist/
 build/
 *.egg-info/
+app/data/output
