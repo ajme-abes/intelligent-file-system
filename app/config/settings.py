@@ -37,9 +37,13 @@ class Settings:
     # ── Supported file types ──────────────────────────────────────────────────
     SUPPORTED_EXTENSIONS: frozenset[str] = frozenset({".csv", ".txt", ".json"})
 
+    # ── ML model ──────────────────────────────────────────────────────────────
+    MODEL_DIR: Path = Path(os.getenv("MODEL_DIR", str(_ROOT / "app" / "model" / "weights")))
+    ANOMALY_CONTAMINATION: str = os.getenv("ANOMALY_CONTAMINATION", "auto")
+
     def ensure_dirs(self) -> None:
         """Create all required directories if they do not exist."""
-        for directory in (self.INPUT_DIR, self.OUTPUT_DIR, self.LOG_DIR):
+        for directory in (self.INPUT_DIR, self.OUTPUT_DIR, self.LOG_DIR, self.MODEL_DIR):
             directory.mkdir(parents=True, exist_ok=True)
 
     def __repr__(self) -> str:
