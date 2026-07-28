@@ -79,8 +79,10 @@ jobs:
           docker build --target runtime -t intelliginet:ci .
 
       - name: Smoke test Docker image
+        timeout-minutes: 2
         run: |
           docker run --rm \
+            --entrypoint python \
             -e LOG_FORMAT=text \
             intelliginet:ci \
-            python -c "from app.config import settings; print('Config OK:', settings)"
+            -c "from app.config import settings; print('Config OK:', settings)"
