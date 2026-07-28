@@ -37,7 +37,7 @@ logger = logging.getLogger("FileMonitor")
 
 # Where the trained model lives on disk
 _WEIGHTS_DIR = Path(__file__).parent / "weights"
-_MODEL_PATH  = _WEIGHTS_DIR / "classifier.joblib"
+_MODEL_PATH = _WEIGHTS_DIR / "classifier.joblib"
 
 CATEGORIES = ["config", "user_data", "financial", "log", "unknown"]
 
@@ -61,18 +61,18 @@ def _seed_training_data() -> tuple[np.ndarray, np.ndarray]:
     # config  — kv_ratio high, json_ratio high, few commas
     config = _jitter([6.0, 3.0, 0.15, 0.05, 0.30, 0.10, 0.10, 0.50, 0.70, 0.60, 0.05, 0.05, 0.05])
     # user_data — comma_ratio high, moderate alpha, low kv
-    user   = _jitter([7.0, 4.0, 0.20, 0.10, 0.45, 0.12, 0.08, 0.45, 0.10, 0.00, 0.80, 0.02, 0.01])
+    user = _jitter([7.0, 4.0, 0.20, 0.10, 0.45, 0.12, 0.08, 0.45, 0.10, 0.00, 0.80, 0.02, 0.01])
     # financial — digit_ratio high, comma_ratio high
-    fin    = _jitter([7.5, 4.0, 0.18, 0.30, 0.25, 0.12, 0.10, 0.40, 0.05, 0.00, 0.75, 0.02, 0.01])
+    fin = _jitter([7.5, 4.0, 0.18, 0.30, 0.25, 0.12, 0.10, 0.40, 0.05, 0.00, 0.75, 0.02, 0.01])
     # log — comment_ratio high, blank_ratio higher, moderate alpha
-    log    = _jitter([8.0, 5.0, 0.25, 0.08, 0.40, 0.15, 0.12, 0.55, 0.10, 0.00, 0.05, 0.10, 0.35])
+    log = _jitter([8.0, 5.0, 0.25, 0.08, 0.40, 0.15, 0.12, 0.55, 0.10, 0.00, 0.05, 0.10, 0.35])
     # unknown — balanced / random-ish
-    unk    = _jitter([5.0, 2.5, 0.12, 0.12, 0.35, 0.18, 0.15, 0.42, 0.20, 0.10, 0.15, 0.08, 0.08])
+    unk = _jitter([5.0, 2.5, 0.12, 0.12, 0.35, 0.18, 0.15, 0.42, 0.20, 0.10, 0.15, 0.08, 0.08])
 
     X = np.clip(np.vstack([config, user, fin, log, unk]), 0.0, None)
     y = np.array(
-        ["config"] * 30 + ["user_data"] * 30 +
-        ["financial"] * 30 + ["log"] * 30 + ["unknown"] * 30
+        ["config"] * 30 + ["user_data"] * 30
+        + ["financial"] * 30 + ["log"] * 30 + ["unknown"] * 30
     )
     return X, y
 
@@ -105,9 +105,9 @@ class FileTypeClassifier:
             confidence — probability of the top prediction  (0.0 – 1.0)
         """
         features = np.array(extract_features(file_path)).reshape(1, -1)
-        proba    = self._model.predict_proba(features)[0]
-        idx      = int(np.argmax(proba))
-        label    = self._model.classes_[idx]
+        proba = self._model.predict_proba(features)[0]
+        idx = int(np.argmax(proba))
+        label = self._model.classes_[idx]
         return label, round(float(proba[idx]), 4)
 
     def fit(self, X: np.ndarray, y: np.ndarray) -> "FileTypeClassifier":

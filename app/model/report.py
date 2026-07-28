@@ -68,7 +68,7 @@ class ReportGenerator:
 
         # ── Column statistics ─────────────────────────────────────────────────
         numeric_cols = data.select_dtypes(include="number").columns.tolist()
-        string_cols  = data.select_dtypes(exclude="number").columns.tolist()
+        string_cols = data.select_dtypes(exclude="number").columns.tolist()
 
         col_stats: dict[str, Any] = {}
         for col in numeric_cols:

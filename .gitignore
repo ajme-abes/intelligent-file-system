@@ -1,23 +1,57 @@
+# ── Python ────────────────────────────────────────────────────────────────────
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
+*.pdb
 
-.env
+# ── Virtual environments ──────────────────────────────────────────────────────
 venv/
 .venv/
+env/
 
+# ── Environment / secrets ─────────────────────────────────────────────────────
+.env
+!.env.example
+
+# ── Logs ─────────────────────────────────────────────────────────────────────
 logs/*.log
 
+# ── Data directories ─────────────────────────────────────────────────────────
 data/output/*
 !data/output/.gitkeep
-
 data/input/*
 !data/input/.gitkeep
 
-.ipynb_checkpoints/
+# ── ML model weights (binary — managed separately, not in git) ───────────────
+app/model/weights/*.joblib
+app/model/weights/*.pkl
+# Keep the directory itself tracked
+!app/model/weights/.gitkeep
 
+# ── Build / packaging ─────────────────────────────────────────────────────────
 dist/
 build/
 *.egg-info/
-app/data/output
+*.egg
+
+# ── Testing / coverage ────────────────────────────────────────────────────────
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# ── Editors ───────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# ── Docker ────────────────────────────────────────────────────────────────────
+# (docker-compose.yml and Dockerfile are tracked — only ignore runtime artifacts)
+.docker/
+
+# ── Misc ─────────────────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+app/data/

@@ -21,7 +21,6 @@ from __future__ import annotations
 import logging
 from typing import Any
 
-import numpy as np
 import pandas as pd
 from sklearn.ensemble import IsolationForest
 
@@ -47,7 +46,7 @@ class AnomalyDetector:
         random_state: int = 42,
     ) -> None:
         self.contamination = contamination
-        self.random_state  = random_state
+        self.random_state = random_state
 
     def detect(self, data: pd.DataFrame) -> tuple[pd.DataFrame, dict[str, Any]]:
         """
@@ -82,16 +81,16 @@ class AnomalyDetector:
             random_state=self.random_state,
         )
         predictions = iso.fit_predict(X)   # +1 = normal, -1 = anomaly
-        is_anomaly  = predictions == -1
+        is_anomaly = predictions == -1
 
         result = data.copy()
         result["_anomaly"] = is_anomaly
 
         anomaly_count = int(is_anomaly.sum())
         summary: dict[str, Any] = {
-            "total_rows":        len(data),
-            "anomaly_count":     anomaly_count,
-            "anomaly_ratio":     round(anomaly_count / len(data), 4),
+            "total_rows": len(data),
+            "anomaly_count": anomaly_count,
+            "anomaly_ratio": round(anomaly_count / len(data), 4),
             "numeric_cols_used": numeric_cols,
         }
 

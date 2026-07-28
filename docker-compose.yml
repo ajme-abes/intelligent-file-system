@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  intelliginet:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+    image: intelliginet:latest
+    container_name: intelliginet_app
+
+    # ── Volume mounts ──────────────────────────────────────────────────────
+    # Mount host directories so files survive container restarts and you can
+    # drop files in from the host machine.
+    volumes:
+      - ./data/input:/app/data/input          # drop files here to process
+      - ./data/output:/app/data/output        # processed files appear here
+      - ./logs:/app/logs                      # logs visible on host
+      - ./app/model/weights:/app/app/model/weights  # trained model persists
+
+    # ── Environment ────────────────────────────────────────────────────────
+    env_file:
+      - .env                                  # create from .env.example
+
+    environment:
+      PYTHONUNBUFFERED: "1"
+
+    # ── Restart policy ─────────────────────────────────────────────────────
+    restart: unless-stopped
+
+    # ── Resource limits ────────────────────────────────────────────────────
+    deploy:
+      resources:
+        limits:
+          cpus: "2.0"
+          memory: 512M
+        reservations:
+          cpus: "0.5"
+          memory: 128M

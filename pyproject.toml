@@ -2,24 +2,79 @@
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
+# ──────────────────────────────────────────────────────────────────────────────
+# Project metadata
+# ──────────────────────────────────────────────────────────────────────────────
 [project]
-name = "intelligent-file-system"
-version = "0.1.0"
-description = "An AI-powered intelligent file monitoring and processing system"
+name = "intelliginet-file-system"
+version = "1.0.0"
+description = "AI-powered intelligent file monitoring and processing system"
 authors = [
-    {name = "Ajmel Abes"}
+    { name = "Ajmel Abes" }
 ]
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
+license = { text = "MIT" }
 
 dependencies = [
-    "watchdog",
-    "pandas",
-    "scikit-learn",
-    "joblib",
-    "pandas",
-    "numpy"
+    "watchdog==6.0.0",
+    "pandas==3.0.2",
+    "scikit-learn==1.8.0",
+    "joblib==1.5.3",
+    "numpy==2.4.4",
+    "scipy==1.17.1",
+    "tzdata==2026.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==8.3.5",
+    "pytest-cov==6.1.0",
+    "flake8",
+    "mypy",
 ]
 
 [tool.setuptools.packages.find]
 where = ["."]
+
+# ──────────────────────────────────────────────────────────────────────────────
+# pytest
+# ──────────────────────────────────────────────────────────────────────────────
+[tool.pytest.ini_options]
+testpaths    = ["test"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+
+# ──────────────────────────────────────────────────────────────────────────────
+# coverage
+# ──────────────────────────────────────────────────────────────────────────────
+[tool.coverage.run]
+source   = ["app"]
+omit     = ["app/model/weights/*", "*/__pycache__/*", "*/test*"]
+
+[tool.coverage.report]
+show_missing   = true
+skip_covered   = false
+fail_under     = 70
+exclude_lines  = [
+    "pragma: no cover",
+    "if __name__ == .__main__.:",
+    "raise NotImplementedError",
+    "@abstractmethod",
+]
+
+# ──────────────────────────────────────────────────────────────────────────────
+# flake8  (configured via setup.cfg since flake8 doesn't read pyproject.toml)
+# ──────────────────────────────────────────────────────────────────────────────
+
+# ──────────────────────────────────────────────────────────────────────────────
+# mypy
+# ──────────────────────────────────────────────────────────────────────────────
+[tool.mypy]
+python_version         = "3.12"
+ignore_missing_imports = true
+no_strict_optional     = true
+warn_unused_ignores    = false
+exclude                = ["venv", "build", "dist", ".github"]

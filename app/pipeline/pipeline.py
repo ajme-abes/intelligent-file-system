@@ -33,13 +33,13 @@ class ProcessingPipeline:
 
     def __init__(self) -> None:
         self._processors = {
-            "csv":  CSVProcessor(),
+            "csv": CSVProcessor(),
             "json": JsonProcessor(),
-            "txt":  TXTProcessor(),
+            "txt": TXTProcessor(),
         }
         self._classifier = FileTypeClassifier()
-        self._detector   = AnomalyDetector()
-        self._reporter   = ReportGenerator()
+        self._detector = AnomalyDetector()
+        self._reporter = ReportGenerator()
 
     def get_processor(self, file_type: str):
         return self._processors.get(file_type)
@@ -131,7 +131,7 @@ def _get_cleaning_report(processor, raw_data, cleaned_data):
     otherwise run the cleaner again to get it (safe — cleaner is pure).
     For TXTProcessor (no DataFrame cleaner) return a minimal report.
     """
-    from app.cleaning.cleaner import CleaningReport, DataCleaner
+    from app.cleaning.cleaner import CleaningReport
 
     if hasattr(processor, "_cleaner"):
         # Re-run clean() to get the report — it's a pure function, no side effects
@@ -144,6 +144,6 @@ def _get_cleaning_report(processor, raw_data, cleaned_data):
     report = CleaningReport()
     if isinstance(raw_data, list) and isinstance(cleaned_data, list):
         report.original_rows = len(raw_data)
-        report.final_rows    = len(cleaned_data)
+        report.final_rows = len(cleaned_data)
         report.duplicates_removed = len(raw_data) - len(cleaned_data)
     return report
