@@ -109,7 +109,7 @@ class DataCleaner:
 
         # 3. Strip whitespace from string columns (before dedup so values compare cleanly)
         if self.strip_strings:
-            for col in data.select_dtypes(include=["object", "str"]).columns:
+            for col in data.select_dtypes(include=["object", "string"]).columns:
                 data[col] = data[col].str.strip()
 
         # 4. Remove duplicate rows (after strip so "Bob " == "Bob" deduplicates correctly)
